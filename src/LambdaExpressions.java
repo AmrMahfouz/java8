@@ -1,5 +1,7 @@
 public class LambdaExpressions {
 
+    private static String GREETING = "Hello ";
+
     public static void main(String[] args) {
 
         MathOperation addition = (a, b) -> a + b;
@@ -12,12 +14,16 @@ public class LambdaExpressions {
         System.out.println(operate(10, 5, division));
         System.out.println(operate(10, 5, subtraction));
 
-        GreetingService greetingService1 = message -> System.out.println("Hello " + message);
+        String localString = ", Welcome";
+
+        GreetingService greetingService1 = message -> System.out.println(GREETING + message + localString);
 
         GreetingService greetingService2 = message -> {
-            System.out.println("Hello there");
+            System.out.println(GREETING + "there" + localString);
             System.out.println("My name is " + message);
         };
+
+        //localString = ", new message";    this will create a compilation error while trying to edit local variables used in lambda expression because they should be in final or effectively final
 
         greetingService1.sayMessage("Amr");
         greetingService2.sayMessage("Mido");
